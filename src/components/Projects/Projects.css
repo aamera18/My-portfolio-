@@ -1,0 +1,824 @@
+/* =========================================
+   PROJECTS SECTION
+========================================= */
+
+.projects-section {
+  width: 100%;
+  padding: 120px 20px;
+  background: #ffffff;
+  color: #0f172a;
+}
+
+.projects-container {
+  width: min(1150px, 100%);
+  margin: 0 auto;
+}
+
+
+/* =========================================
+   HEADING
+========================================= */
+
+.projects-heading {
+  margin-bottom: 85px;
+}
+
+.projects-label {
+  margin: 0 0 14px;
+
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 3px;
+
+  color: #e05d44;
+}
+
+.projects-heading h2 {
+  margin: 0;
+
+  font-size: clamp(42px, 6vw, 68px);
+  line-height: 1;
+  letter-spacing: -2px;
+  font-weight: 700;
+
+  color: #0f172a;
+}
+
+.projects-heading h2 span {
+  color: #e05d44;
+}
+
+.projects-heading-line {
+  width: 55px;
+  height: 3px;
+
+  margin: 25px 0 20px;
+
+  background: #e05d44;
+  border-radius: 20px;
+}
+
+.projects-intro {
+  max-width: 520px;
+
+  margin: 0;
+
+  color: #64748b;
+
+  font-size: 16px;
+  line-height: 1.8;
+}
+
+
+/* =========================================
+   PROJECT LIST
+========================================= */
+
+.projects-list {
+  display: flex;
+  flex-direction: column;
+
+  gap: 120px;
+}
+
+
+/* =========================================
+   PROJECT ITEM
+========================================= */
+
+.project-item {
+  display: grid;
+
+  grid-template-columns: 1.15fr 0.85fr;
+
+  gap: 70px;
+
+  align-items: center;
+}
+
+.project-item.project-reverse {
+  grid-template-columns: 0.85fr 1.15fr;
+}
+
+.project-item.project-reverse .project-visual {
+  order: 2;
+}
+
+.project-item.project-reverse .project-details {
+  order: 1;
+}
+
+
+/* =========================================
+   PROJECT VISUAL
+   REAL PROJECT PREVIEW CARD
+========================================= */
+
+.project-visual {
+  min-height: 390px;
+  perspective: 1000px;
+}
+
+.project-visual-inner {
+  position: relative;
+
+  width: 100%;
+  height: 390px;
+
+  overflow: hidden;
+
+  border: 1px solid #e2e8f0;
+  border-radius: 14px;
+
+  background: #0f172a;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  padding: 0;
+
+  box-shadow:
+    0 18px 45px rgba(15, 23, 42, 0.12);
+
+  transition:
+    transform 0.4s ease,
+    box-shadow 0.4s ease,
+    border-color 0.4s ease;
+}
+
+
+/* =========================================
+   BROWSER / APP HEADER
+========================================= */
+
+.project-visual-inner::before {
+  content: "";
+
+  position: absolute;
+
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height: 48px;
+
+  background: #ffffff;
+
+  border-bottom: 1px solid #e2e8f0;
+
+  z-index: 3;
+}
+
+.finance-preview { position: relative; z-index: 4; display: flex; height: 100%; padding-top: 48px; color: #f6ede7; background: #241918; font-family: "DM Sans", sans-serif; }
+.finance-sidebar { display: flex; flex: 0 0 116px; flex-direction: column; gap: 8px; padding: 20px 10px 12px; background: #33201d; border-right: 1px solid rgba(255, 255, 255, 0.06); font-size: 8px; color: #b9a09a; }
+.finance-brand { display: flex; align-items: center; gap: 5px; margin: 0 8px 20px; color: #fff8f4; font-size: 13px; letter-spacing: -0.5px; }
+.finance-brand span { display: grid; place-items: center; width: 19px; height: 19px; border-radius: 6px; color: #33201d; background: #e05d44; font-size: 11px; font-weight: 800; }
+.finance-nav { display: flex; align-items: center; gap: 7px; padding: 8px; border-radius: 6px; }
+.finance-nav span { width: 11px; color: #927870; font-size: 10px; text-align: center; }
+.finance-nav-active { color: #ffc0a8; background: rgba(224, 93, 68, 0.16); }
+.finance-nav-active span { color: #e05d44; }
+.finance-sidebar-footer { display: flex; align-items: center; gap: 6px; margin-top: auto; padding: 8px 3px 0; border-top: 1px solid rgba(255, 255, 255, 0.08); font-size: 7px; }
+.finance-avatar { display: grid; place-items: center; width: 20px; height: 20px; border-radius: 50%; color: #33201d; background: #f4b183; font-size: 7px; font-weight: 800; }
+.finance-main { flex: 1; min-width: 0; padding: 18px 19px 14px; }
+.finance-topbar, .finance-chart-heading { display: flex; align-items: flex-start; justify-content: space-between; }
+.finance-kicker { display: block; margin-bottom: 4px; color: #718096; font-size: 6px; letter-spacing: 1.3px; }
+.finance-topbar strong { display: block; color: #f4f7fb; font-size: 12px; font-weight: 600; }
+.finance-bell { color: #e05d44; font-size: 18px; line-height: 1; }
+.finance-balance { margin-top: 18px; padding: 14px 15px; border-radius: 9px; background: linear-gradient(125deg, #70362c, #9b4636); box-shadow: 0 8px 18px rgba(0, 0, 0, 0.12); }
+.finance-balance span, .finance-stats span { display: block; color: #eac0b2; font-size: 7px; }
+.finance-balance strong { display: block; margin: 3px 0 4px; color: #ffffff; font-size: 25px; letter-spacing: -1px; }
+.finance-balance strong span { display: inline; color: #f4b183; font-size: 14px; }
+.finance-balance small { color: #eac0b2; font-size: 7px; }
+.finance-balance b, .finance-stats b { color: #ffc0a8; font-weight: 600; }
+.finance-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 9px; margin-top: 10px; }
+.finance-stats > div { padding: 10px; border: 1px solid rgba(255, 255, 255, 0.07); border-radius: 7px; background: #33201d; }
+.finance-stats strong { display: block; margin: 4px 0 3px; color: #f4f7fb; font-size: 13px; }
+.finance-down { color: #f4b183 !important; }
+.finance-chart, .finance-transactions { margin-top: 13px; padding: 11px 12px; border-radius: 7px; background: #33201d; }
+.finance-chart-heading { color: #dce5ef; font-size: 8px; }
+.finance-chart-heading span { color: #f4b183; font-size: 7px; }
+.finance-bars { display: flex; align-items: end; justify-content: space-around; height: 55px; margin-top: 9px; border-bottom: 1px solid rgba(255, 255, 255, 0.08); }
+.finance-bars i { width: 13px; max-height: 48px; border-radius: 3px 3px 0 0; background: #754238; }
+.finance-bars .finance-bar-current { background: #e05d44; }
+.finance-months { display: flex; justify-content: space-around; margin-top: 5px; color: #718096; font-size: 6px; }
+.finance-transactions > div:not(.finance-chart-heading) { display: flex; align-items: center; gap: 7px; margin-top: 9px; color: #dce5ef; font-size: 7px; }
+.finance-transactions small { display: block; margin-top: 3px; color: #718096; font-size: 6px; }
+.finance-transactions b { margin-left: auto; color: #f4b183; font-size: 8px; }
+.finance-transactions .finance-income { color: #f4b183; }
+.finance-transaction-icon { display: grid; place-items: center; width: 22px; height: 22px; border-radius: 6px; color: #f4b183; background: rgba(244, 177, 131, 0.12); font-size: 12px; }
+.finance-icon-salary { color: #e05d44; background: rgba(224, 93, 68, 0.12); }
+
+.expense-preview { position: relative; z-index: 4; height: 100%; padding: 15px 20px; overflow: hidden; color: #33201d; background: #fffaf6; font-family: "DM Sans", sans-serif; }
+.expense-header, .expense-welcome, .expense-summary, .expense-section-title, .expense-list > div { display: flex; align-items: center; justify-content: space-between; }
+.expense-brand { display: flex; align-items: center; gap: 5px; color: #33201d; font-size: 13px; }
+.expense-brand span { color: #e05d44; font-size: 17px; }
+.expense-profile { display: grid; place-items: center; width: 22px; height: 22px; border-radius: 50%; color: #fff; background: #e05d44; font-size: 7px; font-weight: 700; }
+.expense-welcome { margin-top: 18px; align-items: end; }
+.expense-welcome span { display: block; margin-bottom: 4px; color: #ad8d82; font-size: 6px; letter-spacing: 1px; }
+.expense-welcome strong { display: block; font-size: 13px; font-weight: 700; }
+.expense-welcome button { padding: 6px 9px; border: 0; border-radius: 5px; color: #fff; background: #e05d44; font: inherit; font-size: 7px; font-weight: 700; }
+.expense-summary { gap: 10px; margin-top: 15px; align-items: stretch; }
+.expense-summary > div { flex: 1; min-width: 0; padding: 12px; border-radius: 8px; color: #fff8f4; background: #70362c; }
+.expense-summary .expense-budget { color: #33201d; background: #f9e2d8; }
+.expense-summary span { display: block; color: #eac0b2; font-size: 7px; }
+.expense-budget span { color: #ad7160; }
+.expense-summary strong { display: block; margin: 5px 0 3px; font-size: 18px; }
+.expense-summary small { color: #efb9a8; font-size: 7px; }
+.expense-summary small b { color: #ffc0a8; }
+.expense-budget small { color: #9e6c5e; }
+.expense-progress { height: 4px; margin: 8px 0 5px; border-radius: 5px; background: #e8c4b8; }
+.expense-progress i { display: block; width: 64%; height: 100%; border-radius: inherit; background: #e05d44; }
+.expense-content { display: grid; grid-template-columns: 1fr 1.2fr; gap: 10px; margin-top: 13px; }
+.expense-breakdown, .expense-list { padding: 12px; border: 1px solid #f0ddd5; border-radius: 8px; background: #fff; }
+.expense-section-title { color: #533a33; font-size: 8px; }
+.expense-section-title span { color: #e05d44; font-size: 7px; }
+.expense-donut { display: grid; place-items: center; width: 76px; height: 76px; margin: 12px auto 8px; border-radius: 50%; background: conic-gradient(#e05d44 0 65%, #f4b183 65% 83%, #f8d3bd 83% 100%); }
+.expense-donut > div { display: grid; place-items: center; width: 51px; height: 51px; border-radius: 50%; background: #fff; }
+.expense-donut strong { font-size: 13px; }.expense-donut span { color: #ad8d82; font-size: 6px; }
+.expense-legend span { display: flex; align-items: center; gap: 4px; margin-top: 6px; color: #86675d; font-size: 7px; }.expense-legend b { margin-left: auto; color: #533a33; font-size: 7px; }.expense-dot { width: 6px; height: 6px; border-radius: 50%; background: #e05d44; }.expense-dot-two { background: #f4b183; }.expense-dot-three { background: #f8d3bd; }
+.expense-list > div:not(.expense-section-title) { justify-content: start; gap: 7px; margin-top: 10px; color: #533a33; font-size: 7px; }.expense-list small { display: block; margin-top: 3px; color: #ad8d82; font-size: 6px; }.expense-list b { margin-left: auto; color: #e05d44; font-size: 8px; }.expense-icon { display: grid; place-items: center; width: 23px; height: 23px; border-radius: 6px; color: #e05d44; background: #fff0ea; font-size: 12px; }.expense-icon-orange { color: #c94d36; background: #fce2d8; }.expense-icon-yellow { color: #c27b49; background: #fff1df; }
+
+
+.portfolio-laptop { position: relative; z-index: 4; width: 100%; padding: 18px 18px 0; transform: rotate(-1deg); }
+.portfolio-laptop-screen { overflow: hidden; border: 5px solid #241918; border-radius: 9px 9px 3px 3px; background: #fff; box-shadow: 0 12px 25px rgba(36, 25, 24, 0.24); }
+.portfolio-browser-bar { display: flex; align-items: center; gap: 4px; height: 18px; padding: 0 8px; background: #33201d; }
+.portfolio-browser-bar span { width: 5px; height: 5px; border-radius: 50%; background: #927870; }.portfolio-browser-bar span:first-child { background: #e05d44; }.portfolio-browser-bar em { margin-left: 8px; color: #b9a09a; font-size: 5px; font-style: normal; }
+.portfolio-browser-content { height: 235px; padding: 13px 14px; background: #fffaf6; }
+.portfolio-mini-nav { display: flex; align-items: center; gap: 12px; color: #7d6259; font-size: 6px; }.portfolio-mini-nav strong { margin-right: auto; color: #0f172a; font-size: 8px; }.portfolio-mini-nav strong b { color: #e05d44; }.portfolio-mini-nav span { padding: 3px 0; }.portfolio-mini-nav-active { color: #0f172a; border-bottom: 1px solid #e05d44; }.portfolio-mini-nav button, .portfolio-mini-actions button { border: 0; border-radius: 4px; color: #fff; background: #e05d44; font: inherit; font-size: 5px; font-weight: 700; }.portfolio-mini-nav button { padding: 4px 6px; }.portfolio-mini-nav button b, .portfolio-mini-actions button b { margin-left: 2px; }
+.portfolio-mini-hero { display: grid; grid-template-columns: 1fr .9fr; gap: 12px; margin-top: 27px; }.portfolio-mini-hero small { display: block; color: #e05d44; font-size: 6px; font-weight: 700; letter-spacing: 1px; }.portfolio-mini-hero > div > strong { display: block; margin-top: 6px; color: #0f172a; font-size: 26px; line-height: .91; letter-spacing: -1px; }.portfolio-mini-hero > div > strong i { color: #b9412d; font-style: normal; }.portfolio-mini-hero > div > b { display: block; margin-top: 12px; color: #0f172a; font-size: 8px; }.portfolio-mini-hero p { max-width: 135px; margin-top: 8px; color: #7d6259; font-size: 6px; line-height: 1.5; }.portfolio-mini-actions { display: flex; align-items: center; gap: 7px; margin-top: 11px; }.portfolio-mini-actions button { padding: 5px 7px; }.portfolio-mini-actions span { display: flex; align-items: center; gap: 3px; color: #7d6259; font-size: 5px; }.portfolio-mini-actions span i { width: 4px; height: 4px; border-radius: 50%; background: #e05d44; }
+.portfolio-mini-code { overflow: hidden; min-height: 142px; padding: 10px; border-radius: 5px; color: #e8dcd6; background: #241918; font-family: "Courier New", monospace; box-shadow: 0 10px 18px rgba(36, 25, 24, .2); }.portfolio-mini-code > span { display: block; margin-bottom: 8px; color: #e05d44; font-size: 6px; letter-spacing: 2px; }.portfolio-mini-code > span em { float: right; color: #927870; font-size: 5px; font-style: normal; letter-spacing: 0; }.portfolio-mini-code code { color: #e8dcd6; font-size: 6px; line-height: 1.8; }.portfolio-mini-code code b { color: #f4b183; }.portfolio-mini-code code i { color: #e8a48d; font-style: normal; }.portfolio-mini-code code em { color: #f6c7a9; font-style: normal; }
+.portfolio-laptop-base { position: relative; width: 108%; height: 13px; margin-left: -4%; border-radius: 0 0 13px 13px; background: #33201d; box-shadow: 0 7px 10px rgba(36, 25, 24, .2); }.portfolio-laptop-base span { display: block; width: 25%; height: 3px; margin: 0 auto; border-radius: 0 0 5px 5px; background: #927870; }
+
+/* =========================================
+  DECORATIVE PROJECT ELEMENTS
+========================================= */
+
+.project-visual-inner::after {
+  content: "";
+
+  position: absolute;
+
+  width: 320px;
+  height: 320px;
+
+  right: -150px;
+  bottom: -170px;
+
+  border: 1px solid rgba(224, 93, 68, 0.22);
+
+  border-radius: 50%;
+
+  z-index: 1;
+}
+
+
+/* =========================================
+   PROJECT CARD HOVER
+========================================= */
+
+.project-visual:hover .project-visual-inner {
+  transform: translateY(-8px);
+
+  border-color: rgba(224, 93, 68, 0.45);
+
+  box-shadow:
+    0 30px 65px rgba(15, 23, 42, 0.18);
+}
+
+
+/* =========================================
+   BROWSER DOTS
+   Add .project-browser-dots in JSX
+========================================= */
+
+.project-browser-dots {
+  position: absolute;
+
+  top: 17px;
+  left: 18px;
+
+  z-index: 5;
+
+  display: flex;
+  gap: 6px;
+}
+
+.project-browser-dots span {
+  width: 8px;
+  height: 8px;
+
+  border-radius: 50%;
+
+  background: #cbd5e1;
+}
+
+.project-browser-dots span:last-child {
+  background: #e05d44;
+}
+
+
+/* =========================================
+   PROJECT NUMBER
+========================================= */
+
+.project-visual-number {
+  position: absolute;
+
+  top: 68px;
+  left: 35px;
+
+  z-index: 4;
+
+  color: rgba(255, 255, 255, 0.45);
+
+  font-size: 12px;
+  font-weight: 600;
+
+  letter-spacing: 2px;
+}
+
+
+/* =========================================
+   PROJECT PREVIEW CONTENT
+========================================= */
+
+.project-visual-content {
+  position: absolute;
+
+  left: 35px;
+  right: 35px;
+  bottom: 95px;
+
+  z-index: 4;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.project-visual-content span {
+  color: rgba(255, 255, 255, 0.55);
+
+  font-size: 13px;
+  font-weight: 500;
+
+  letter-spacing: 4px;
+
+  text-transform: uppercase;
+}
+
+.project-visual-content strong {
+  margin-top: 8px;
+
+  color: #ffffff;
+
+  font-size: clamp(42px, 5vw, 68px);
+
+  line-height: 0.95;
+
+  letter-spacing: -3px;
+
+  font-weight: 800;
+}
+
+
+/* =========================================
+   RED PROJECT ACCENT
+========================================= */
+
+.project-visual-accent {
+  position: absolute;
+
+  left: 35px;
+  bottom: 42px;
+
+  width: 45px;
+  height: 3px;
+
+  background: #e05d44;
+
+  border-radius: 20px;
+
+  z-index: 4;
+}
+
+
+/* =========================================
+   TECHNOLOGY TAGS
+========================================= */
+
+.project-visual-tech {
+  position: absolute;
+
+  left: 35px;
+  right: 35px;
+  bottom: 18px;
+
+  z-index: 4;
+
+  display: flex;
+  flex-wrap: wrap;
+
+  gap: 7px;
+}
+
+.project-visual-tech span {
+  padding: 5px 9px;
+
+  border: 1px solid rgba(255, 255, 255, 0.18);
+
+  border-radius: 20px;
+
+  color: rgba(255, 255, 255, 0.65);
+
+  background: rgba(255, 255, 255, 0.04);
+
+  font-size: 10px;
+
+  backdrop-filter: blur(5px);
+}
+
+
+/* =========================================
+   PROJECT DETAILS
+========================================= */
+
+.project-details {
+  max-width: 480px;
+}
+
+.project-number {
+  display: block;
+
+  margin-bottom: 18px;
+
+  color: #e05d44;
+
+  font-size: 13px;
+  font-weight: 700;
+
+  letter-spacing: 2px;
+}
+
+.project-category {
+  margin: 0 0 12px;
+
+  color: #64748b;
+
+  font-size: 13px;
+  font-weight: 600;
+
+  letter-spacing: 0.5px;
+
+  text-transform: uppercase;
+}
+
+.project-details h3 {
+  margin: 0 0 20px;
+
+  color: #0f172a;
+
+  font-size: clamp(30px, 4vw, 46px);
+
+  line-height: 1.05;
+
+  letter-spacing: -1.5px;
+
+  font-weight: 750;
+}
+
+.project-description {
+  max-width: 450px;
+
+  margin: 0 0 25px;
+
+  color: #64748b;
+
+  font-size: 15px;
+
+  line-height: 1.8;
+}
+
+
+/* =========================================
+   TECHNOLOGIES
+========================================= */
+
+.project-technologies {
+  display: flex;
+  flex-wrap: wrap;
+
+  gap: 8px;
+
+  margin-bottom: 30px;
+}
+
+.project-technologies span {
+  padding: 7px 11px;
+
+  border: 1px solid #e2e8f0;
+
+  border-radius: 20px;
+
+  color: #475569;
+
+  background: #f8fafc;
+
+  font-size: 11px;
+
+  font-weight: 600;
+
+  transition:
+    color 0.25s ease,
+    border-color 0.25s ease,
+    background 0.25s ease;
+}
+
+.project-technologies span:hover {
+  color: #e05d44;
+
+  border-color: rgba(224, 93, 68, 0.35);
+
+  background: #fff7f5;
+}
+
+
+/* =========================================
+   LINKS
+========================================= */
+
+.project-links {
+  display: flex;
+  align-items: center;
+
+  gap: 25px;
+}
+
+.project-link {
+  display: inline-flex;
+  align-items: center;
+
+  gap: 8px;
+
+  color: #0f172a;
+
+  text-decoration: none;
+
+  font-size: 13px;
+  font-weight: 700;
+
+  border-bottom: 1px solid #cbd5e1;
+
+  padding-bottom: 5px;
+
+  transition:
+    color 0.25s ease,
+    border-color 0.25s ease;
+}
+
+.project-link span {
+  font-size: 17px;
+
+  transition: transform 0.25s ease;
+}
+
+.project-link:hover {
+  color: #e05d44;
+
+  border-color: #e05d44;
+}
+
+.project-link:hover span {
+  transform: translate(3px, -3px);
+}
+
+.project-demo {
+  color: #e05d44;
+
+  border-color: #e05d44;
+}
+
+
+/* =========================================
+   PROJECT NOTE
+========================================= */
+
+.projects-note {
+  margin-top: 100px;
+
+  padding-top: 25px;
+
+  border-top: 1px solid #e2e8f0;
+
+  display: flex;
+  justify-content: space-between;
+
+  gap: 20px;
+
+  color: #94a3b8;
+
+  font-size: 12px;
+
+  letter-spacing: 0.3px;
+}
+
+
+/* =========================================
+   TABLET
+========================================= */
+
+@media (max-width: 900px) {
+
+  .projects-section {
+    padding: 90px 20px;
+  }
+
+  .projects-list {
+    gap: 90px;
+  }
+
+  .project-item,
+  .project-item.project-reverse {
+    grid-template-columns: 1fr;
+
+    gap: 40px;
+  }
+
+  .project-item.project-reverse .project-visual {
+    order: 1;
+  }
+
+  .project-item.project-reverse .project-details {
+    order: 2;
+  }
+
+  .project-details {
+    max-width: 650px;
+  }
+
+  .project-description {
+    max-width: 600px;
+  }
+
+  .project-visual,
+  .project-visual-inner {
+    min-height: 360px;
+    height: 360px;
+  }
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 600px) {
+
+  .projects-section {
+    padding: 75px 16px;
+  }
+
+  .projects-heading {
+    margin-bottom: 60px;
+  }
+
+  .projects-heading h2 {
+    font-size: 44px;
+  }
+
+  .projects-intro {
+    font-size: 14px;
+  }
+
+  .projects-list {
+    gap: 75px;
+  }
+
+  .project-item,
+  .project-item.project-reverse {
+    gap: 30px;
+  }
+
+  .project-visual,
+  .project-visual-inner {
+    min-height: 280px;
+    height: 280px;
+  }
+
+  .project-visual-inner {
+    border-radius: 10px;
+  }
+
+  .project-visual-content {
+    left: 25px;
+    right: 25px;
+    bottom: 75px;
+  }
+
+  .portfolio-laptop {
+    padding: 14px 10px 0;
+  }
+
+  .portfolio-browser-content {
+    height: 165px;
+    padding: 10px;
+  }
+
+  .portfolio-mini-nav {
+    gap: 6px;
+  }
+
+  .portfolio-mini-hero {
+    gap: 7px;
+    margin-top: 18px;
+  }
+
+  .portfolio-mini-hero > div > strong {
+    font-size: 18px;
+  }
+
+  .portfolio-mini-hero > div > b {
+    margin-top: 8px;
+    font-size: 6px;
+  }
+
+  .portfolio-mini-code {
+    min-height: 105px;
+    padding: 7px;
+  }
+
+  .portfolio-mini-code code {
+    font-size: 5px;
+    line-height: 1.55;
+  }
+
+  .project-visual-content strong {
+    font-size: 43px;
+  }
+
+  .project-visual-content span {
+    font-size: 11px;
+    letter-spacing: 3px;
+  }
+
+  .project-visual-number {
+    top: 62px;
+    left: 25px;
+  }
+
+  .project-visual-tech {
+    left: 25px;
+    right: 25px;
+  }
+
+  .project-visual-accent {
+    left: 25px;
+  }
+
+  .project-details h3 {
+    font-size: 32px;
+  }
+
+  .project-description {
+    font-size: 14px;
+    line-height: 1.7;
+  }
+
+  .project-links {
+    gap: 18px;
+  }
+
+  .projects-note {
+    margin-top: 70px;
+
+    flex-direction: column;
+
+    gap: 6px;
+  }
+}
+
+
+/* =========================================
+   SMALL MOBILE
+========================================= */
+
+@media (max-width: 380px) {
+
+  .projects-heading h2 {
+    font-size: 38px;
+  }
+
+  .project-visual,
+  .project-visual-inner {
+    min-height: 250px;
+    height: 250px;
+  }
+
+  .project-visual-content strong {
+    font-size: 36px;
+  }
+
+  .project-details h3 {
+    font-size: 29px;
+  }
+}

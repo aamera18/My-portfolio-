@@ -1,0 +1,166 @@
+/* =========================
+   FOOTER
+========================= */
+
+.footer {
+  background: #0f172a;
+
+  color: #ffffff;
+
+  padding: 55px 0 25px;
+}
+
+.footer-container {
+  width: min(1120px, calc(100% - 40px));
+
+  margin: 0 auto;
+}
+
+
+/* =========================
+   MAIN FOOTER
+========================= */
+
+.footer-main {
+  display: grid;
+
+  grid-template-columns: 1.5fr 1fr 1fr;
+
+  gap: 60px;
+
+  padding-bottom: 40px;
+}
+
+
+/* =========================
+   BRAND
+========================= */
+
+.footer-logo {
+  display: inline-block;
+
+  margin-bottom: 12px;
+
+  color: #ffffff;
+
+  font-size: 1.5rem;
+
+  font-weight: 800;
+
+  text-decoration: none;
+
+  letter-spacing: -0.04em;
+}
+
+.footer-logo span {
+  color: #e05d44;
+}
+
+.footer-brand p {
+  max-width: 330px;
+
+  margin: 0;
+
+  color: #94a3b8;
+
+  font-size: 0.85rem;
+
+  line-height: 1.7;
+}
+
+
+/* =========================
+   LINKS
+========================= */
+
+.footer-links,
+.footer-social {
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: flex-start;
+
+  gap: 12px;
+}
+
+.footer-links a,
+.footer-social a {
+  color: #cbd5e1;
+
+  font-size: 0.85rem;
+
+  text-decoration: none;
+
+  transition: color 180ms ease;
+}
+
+.footer-links a:hover,
+.footer-social a:hover {
+  color: #e05d44;
+}
+
+
+/* =========================
+   BOTTOM
+========================= */
+
+.footer-bottom {
+  display: flex;
+
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 20px;
+
+  padding-top: 22px;
+
+  border-top: 1px solid #1e293b;
+}
+
+.footer-bottom p {
+  margin: 0;
+
+  color: #64748b;
+
+  font-size: 0.75rem;
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 700px) {
+
+  .footer-main {
+    grid-template-columns: 1fr 1fr;
+
+    gap: 40px;
+  }
+
+  .footer-brand {
+    grid-column: 1 / -1;
+  }
+
+  .footer-bottom {
+    flex-direction: column;
+
+    align-items: flex-start;
+  }
+}
+
+@media (max-width: 450px) {
+
+  .footer {
+    padding-top: 45px;
+  }
+
+  .footer-main {
+    grid-template-columns: 1fr;
+  }
+
+  .footer-brand {
+    grid-column: auto;
+  }
+}

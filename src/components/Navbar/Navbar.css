@@ -1,0 +1,167 @@
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+
+  width: 100%;
+
+  background-color: #ffffff;
+
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.navbar-container {
+  width: 100%;
+  max-width: 1120px;
+
+  min-height: 76px;
+
+  margin: 0 auto;
+  padding: 0 20px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* LOGO */
+
+.navbar-logo {
+  color: #0f172a;
+
+  text-decoration: none;
+
+  font-size: 1.15rem;
+  font-weight: 800;
+
+  letter-spacing: 0.08em;
+}
+
+.navbar-logo span {
+  color: #e05d44;
+}
+
+/* LINKS */
+
+.navbar-links {
+  display: flex;
+  align-items: center;
+
+  gap: 24px;
+}
+
+.navbar-links a {
+  color: #475569;
+
+  text-decoration: none;
+
+  font-size: 14px;
+  font-weight: 600;
+
+  transition: color 0.2s ease;
+}
+
+.navbar-links a:hover {
+  color: #e05d44;
+}
+
+/* RESUME */
+
+.resume-button {
+  padding: 10px 16px;
+
+  border: 1px solid #e05d44;
+
+  border-radius: 6px;
+
+  color: #e05d44 !important;
+}
+
+.resume-button:hover {
+  background-color: #e05d44;
+
+  color: #ffffff !important;
+}
+
+/* MOBILE BUTTON */
+
+.menu-toggle {
+  display: none;
+
+  width: 42px;
+  height: 42px;
+
+  padding: 8px;
+
+  background: #ffffff;
+
+  border: 1px solid #cbd5e1;
+
+  border-radius: 6px;
+
+  cursor: pointer;
+}
+
+.menu-toggle span {
+  display: block;
+
+  width: 100%;
+  height: 2px;
+
+  margin: 5px 0;
+
+  background-color: #0f172a;
+}
+
+/* MOBILE */
+
+@media (max-width: 800px) {
+
+  .menu-toggle {
+    display: block;
+  }
+
+  .navbar-links {
+    position: absolute;
+
+    top: 76px;
+    left: 16px;
+    right: 16px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+
+    gap: 0;
+
+    padding: 10px;
+
+    background-color: #ffffff;
+
+    border: 1px solid #e2e8f0;
+
+    border-radius: 8px;
+
+    box-shadow: 0 10px 30px rgba(15, 23, 42, 0.12);
+
+    opacity: 0;
+
+    visibility: hidden;
+  }
+
+  .navbar-links.active {
+    opacity: 1;
+
+    visibility: visible;
+  }
+
+  .navbar-links a {
+    padding: 12px;
+  }
+
+  .resume-button {
+    margin-top: 5px;
+
+    text-align: center;
+  }
+}

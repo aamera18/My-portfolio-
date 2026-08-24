@@ -1,0 +1,498 @@
+/* =========================
+   HERO SECTION
+========================= */
+
+.hero {
+  position: relative;
+
+  min-height: calc(100vh - 76px);
+
+  display: flex;
+  align-items: center;
+
+  padding: 80px 0 100px;
+
+  background: #ffffff;
+
+  overflow: hidden;
+}
+
+
+/* =========================
+   CONTAINER
+========================= */
+
+.hero-container {
+  width: min(1120px, calc(100% - 40px));
+
+  margin: 0 auto;
+
+  display: grid;
+
+  grid-template-columns: 1.1fr 0.9fr;
+
+  align-items: center;
+
+  gap: 70px;
+}
+
+
+/* =========================
+   HERO CONTENT
+========================= */
+
+.hero-content {
+  max-width: 650px;
+}
+
+.hero-greeting {
+  margin: 0 0 12px;
+
+  color: #e05d44;
+
+  font-size: 1rem;
+
+  font-weight: 700;
+
+  letter-spacing: 0.08em;
+
+  text-transform: uppercase;
+}
+
+.hero h1 {
+  margin: 0;
+
+  color: #0f172a;
+
+  font-size: clamp(3rem, 6vw, 5.2rem);
+
+  line-height: 1.05;
+
+  letter-spacing: -0.04em;
+}
+
+.hero h1 span {
+  color: #e05d44;
+}
+
+.hero h2 {
+  margin: 20px 0 0;
+
+  color: #334155;
+
+  font-size: clamp(1.4rem, 3vw, 2rem);
+
+  font-weight: 600;
+}
+
+.hero-description {
+  max-width: 600px;
+
+  margin: 24px 0 0;
+
+  color: #64748b;
+
+  font-size: 1.05rem;
+
+  line-height: 1.8;
+}
+
+
+/* =========================
+   BUTTONS
+========================= */
+
+.hero-buttons {
+  display: flex;
+
+  align-items: center;
+
+  gap: 14px;
+
+  margin-top: 32px;
+}
+
+.hero-primary-button,
+.hero-secondary-button {
+  display: inline-flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  min-height: 48px;
+
+  padding: 0.75rem 1.25rem;
+
+  border-radius: 6px;
+
+  font-size: 0.95rem;
+
+  font-weight: 700;
+
+  text-decoration: none;
+
+  transition:
+    background-color 180ms ease,
+    color 180ms ease,
+    border-color 180ms ease,
+    transform 180ms ease;
+}
+
+.hero-primary-button {
+  background: #e05d44;
+
+  border: 1px solid #e05d44;
+
+  color: #ffffff;
+}
+
+.hero-primary-button:hover {
+  background: #c94d36;
+
+  border-color: #c94d36;
+
+  transform: translateY(-2px);
+}
+
+.hero-secondary-button {
+  background: #ffffff;
+
+  border: 1px solid #cbd5e1;
+
+  color: #334155;
+}
+
+.hero-secondary-button:hover {
+  border-color: #e05d44;
+
+  color: #e05d44;
+
+  transform: translateY(-2px);
+}
+
+
+/* =========================
+   SOCIAL LINKS
+========================= */
+
+.hero-socials {
+  display: flex;
+
+  align-items: center;
+
+  gap: 22px;
+
+  margin-top: 30px;
+}
+
+.hero-socials a {
+  display: inline-flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  width: 24px;
+
+  height: 24px;
+
+  color: #64748b;
+
+  text-decoration: none;
+
+  transition: color 180ms ease;
+}
+
+.hero-socials svg {
+  width: 22px;
+
+  height: 22px;
+
+  fill: currentColor;
+}
+
+.hero-socials a:hover {
+  color: #e05d44;
+}
+
+
+/* =========================
+   CODE CARD
+========================= */
+
+.hero-visual {
+  display: flex;
+
+  justify-content: center;
+
+  align-items: center;
+}
+
+.hero-card {
+  width: 100%;
+
+  max-width: 470px;
+
+  min-height: 350px;
+
+  padding: 0;
+
+  border: 1px solid #e2e8f0;
+
+  border-radius: 12px;
+
+  background: #0f172a;
+
+  box-shadow:
+    0 25px 60px rgba(15, 23, 42, 0.18);
+
+  overflow: hidden;
+
+  transform: rotate(1deg);
+
+  transition: transform 250ms ease;
+}
+
+.hero-card:hover {
+  transform: rotate(0deg) translateY(-5px);
+}
+
+
+/* =========================
+   CARD HEADER
+========================= */
+
+.hero-card-header {
+  display: flex;
+
+  align-items: center;
+
+  gap: 7px;
+
+  height: 42px;
+
+  padding: 0 16px;
+
+  background: #1e293b;
+
+  border-bottom: 1px solid #334155;
+}
+
+.hero-card-header span {
+  width: 10px;
+  height: 10px;
+
+  border-radius: 50%;
+
+  background: #64748b;
+}
+
+
+/* =========================
+   CODE
+========================= */
+
+.hero-code {
+  padding: 30px;
+
+  color: #e2e8f0;
+
+  font-family:
+    "Courier New",
+    Courier,
+    monospace;
+
+  font-size: 0.95rem;
+
+  line-height: 1.9;
+}
+
+.hero-code p {
+  margin: 0;
+}
+
+.code-purple {
+  color: #c084fc;
+}
+
+.code-orange {
+  color: #fb923c;
+}
+
+.code-green {
+  color: #86efac;
+}
+
+.code-cursor {
+  color: #e05d44;
+
+  animation: blink 1s infinite;
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}
+
+
+/* =========================
+   SCROLL INDICATOR
+========================= */
+
+.hero-scroll {
+  position: absolute;
+
+  bottom: 30px;
+
+  left: 50%;
+
+  transform: translateX(-50%);
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+
+  gap: 8px;
+
+  color: #94a3b8;
+
+  font-size: 0.75rem;
+
+  font-weight: 600;
+
+  text-decoration: none;
+
+  transition: color 180ms ease;
+}
+
+.hero-scroll:hover {
+  color: #e05d44;
+}
+
+.hero-scroll span {
+  width: 1px;
+
+  height: 28px;
+
+  background: #cbd5e1;
+}
+
+
+/* =========================
+   TABLET
+========================= */
+
+@media (max-width: 900px) {
+
+  .hero-container {
+    grid-template-columns: 1fr;
+
+    gap: 50px;
+  }
+
+  .hero-content {
+    max-width: 700px;
+  }
+
+  .hero-visual {
+    justify-content: flex-start;
+  }
+
+  .hero-card {
+    max-width: 600px;
+  }
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 600px) {
+
+  .hero {
+    min-height: auto;
+
+    padding: 60px 0 90px;
+  }
+
+  .hero-container {
+    width: min(100% - 32px, 560px);
+
+    gap: 45px;
+  }
+
+  .hero h1 {
+    font-size: 3rem;
+  }
+
+  .hero-description {
+    font-size: 0.95rem;
+
+    line-height: 1.7;
+  }
+
+  .hero-buttons {
+    flex-direction: column;
+
+    align-items: stretch;
+  }
+
+  .hero-primary-button,
+  .hero-secondary-button {
+    width: 100%;
+  }
+
+  .hero-socials {
+    gap: 16px;
+
+    flex-wrap: wrap;
+  }
+
+  .hero-card {
+    min-height: 300px;
+
+    transform: none;
+  }
+
+  .hero-card:hover {
+    transform: none;
+  }
+
+  .hero-code {
+    padding: 22px;
+
+    font-size: 0.75rem;
+
+    line-height: 1.8;
+
+    overflow-x: auto;
+  }
+
+  .hero-scroll {
+    display: none;
+  }
+}
+
+
+/* =========================
+   REDUCED MOTION
+========================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+  .hero-primary-button,
+  .hero-secondary-button,
+  .hero-socials a,
+  .hero-card,
+  .hero-scroll,
+  .code-cursor {
+    transition: none;
+
+    animation: none;
+  }
+}
