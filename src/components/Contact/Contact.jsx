@@ -18,10 +18,14 @@ function Contact() {
     const subject = formData.subject.trim();
     const message = formData.message.trim();
 
-    if (name.length < 2 || name.length > 80) return "Please enter a valid name.";
+    if (!/^[\p{L}\p{M}][\p{L}\p{M}\s.'-]*$/u.test(name) || name.replace(/[^\p{L}]/gu, "").length < 2 || name.length > 80) {
+      return "Please enter your real name using letters only.";
+    }
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i.test(email)) return "Please enter a valid email address.";
-    if (subject.length < 3 || subject.length > 150) return "Please enter a valid subject.";
-    if (message.length < 10 || message.length > 3000) return "Your message must be 10 to 3000 characters.";
+    if (subject.length < 3 || subject.length > 150 || !/\p{L}/u.test(subject)) return "Please enter a readable subject.";
+    if (message.length < 10 || message.length > 3000 || !/\p{L}/u.test(message) || /(.)\1{7,}/u.test(message)) {
+      return "Please enter a readable message between 10 and 3000 characters.";
+    }
     return "";
   };
 

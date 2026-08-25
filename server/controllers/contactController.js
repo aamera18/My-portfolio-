@@ -27,20 +27,20 @@ const sendContactMessage = async (req, res, next) => {
       });
     }
 
-    if (fields.name.length < 2 || fields.name.length > 80) {
-      return res.status(400).json({ message: "Please enter a valid name." });
+    if (!/^[\p{L}\p{M}][\p{L}\p{M}\s.'-]*$/u.test(fields.name) || fields.name.replace(/[^\p{L}]/gu, "").length < 2 || fields.name.length > 80) {
+      return res.status(400).json({ message: "Please enter your real name using letters only." });
     }
 
     if (!emailPattern.test(fields.email) || fields.email.length > 120) {
       return res.status(400).json({ message: "Please enter a valid email address." });
     }
 
-    if (fields.subject.length < 3 || fields.subject.length > 150) {
-      return res.status(400).json({ message: "Please enter a valid subject." });
+    if (fields.subject.length < 3 || fields.subject.length > 150 || !/\p{L}/u.test(fields.subject)) {
+      return res.status(400).json({ message: "Please enter a readable subject." });
     }
 
-    if (fields.message.length < 10 || fields.message.length > 3000) {
-      return res.status(400).json({ message: "Your message must be 10 to 3000 characters." });
+    if (fields.message.length < 10 || fields.message.length > 3000 || !/\p{L}/u.test(fields.message) || /(.)\1{7,}/u.test(fields.message)) {
+      return res.status(400).json({ message: "Please enter a readable message between 10 and 3000 characters." });
     }
 
     if (!process.env.GMAIL_USER || !process.env.GMAIL_APP_PASSWORD || process.env.GMAIL_APP_PASSWORD === "YOUR_16_CHARACTER_APP_PASSWORD") {
@@ -52,7 +52,7 @@ const sendContactMessage = async (req, res, next) => {
       service: "gmail",
       auth: {
         user: process.env.GMAIL_USER,
-        pass: process.env.GMAIL_APP_PASSWORD,
+        pass: process.env.GMAIL_APP_PASSWORD.replace(/\s/g, ""),
       },
     });
 
