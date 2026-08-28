@@ -9,7 +9,11 @@ function Contact() {
     message: "",
   });
 
-  const [status, setStatus] = useState({ type: "", message: "" });
+  const [status, setStatus] = useState({
+    type: "",
+    message: "",
+  });
+
   const [isSending, setIsSending] = useState(false);
 
   const validateForm = () => {
@@ -18,14 +22,35 @@ function Contact() {
     const subject = formData.subject.trim();
     const message = formData.message.trim();
 
-    if (!/^[\p{L}\p{M}][\p{L}\p{M}\s.'-]*$/u.test(name) || name.replace(/[^\p{L}]/gu, "").length < 2 || name.length > 80) {
+    if (
+      !/^[\p{L}\p{M}\s.'-]+$/u.test(name) ||
+      name.replace(/[^\p{L}]/gu, "").length < 2 ||
+      name.length > 80
+    ) {
       return "Please enter your real name using letters only.";
     }
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i.test(email)) return "Please enter a valid email address.";
-    if (subject.length < 3 || subject.length > 150 || !/\p{L}/u.test(subject)) return "Please enter a readable subject.";
-    if (message.length < 10 || message.length > 3000 || !/\p{L}/u.test(message) || /(.)\1{7,}/u.test(message)) {
+
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i.test(email)) {
+      return "Please enter a valid email address.";
+    }
+
+    if (
+      subject.length < 3 ||
+      subject.length > 150 ||
+      !/\p{L}/u.test(subject)
+    ) {
+      return "Please enter a readable subject.";
+    }
+
+    if (
+      message.length < 10 ||
+      message.length > 3000 ||
+      !/\p{L}/u.test(message) ||
+      /(.)\1{7,}/u.test(message)
+    ) {
       return "Please enter a readable message between 10 and 3000 characters.";
     }
+
     return "";
   };
 
@@ -38,37 +63,75 @@ function Contact() {
     }));
   };
 
+  const getApiUrl = () => {
+    // First, try to use the Vite environment variable
+    const envUrl = import.meta.env.VITE_API_URL;
+    if (envUrl) return envUrl;
+
+    // Default to deployed API - never use localhost
+    return "https://portfolio-api-66o3.onrender.com";
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     const validationMessage = validateForm();
+
     if (validationMessage) {
-      setStatus({ type: "error", message: validationMessage });
+      setStatus({
+        type: "error",
+        message: validationMessage,
+      });
       return;
     }
 
     setIsSending(true);
-    setStatus({ type: "sending", message: "Sending your message..." });
+
+    setStatus({
+      type: "sending",
+      message: "Sending your message...",
+    });
 
     try {
-      const API_URL =
-        import.meta.env.VITE_API_URL || "http://localhost:5000";
+      const API_URL = getApiUrl();
 
-      const response = await fetch(`${API_URL}/api/contact`, {
+      if (!API_URL) {
+        throw new Error(
+          "Contact service is not configured. Please try again later."
+        );
+      }
+
+      const endpoint = `${API_URL}/api/contact`;
+      
+      const response = await fetch(endpoint, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
+        credentials: "omit", // Don't send credentials for cross-origin
         body: JSON.stringify(formData),
       });
 
-      const data = await response.json();
+      let data = {};
 
-      if (!response.ok) {
-        throw new Error(data.message || "Something went wrong.");
+      try {
+        data = await response.json();
+      } catch {
+        data = {};
       }
 
-      setStatus({ type: "success", message: "Your message has been sent successfully!" });
+      if (!response.ok) {
+        const errorMessage = 
+          data.message ||
+          data.error ||
+          `Server error: ${response.status}`;
+        throw new Error(errorMessage);
+      }
+
+      setStatus({
+        type: "success",
+        message: "Your message has been sent successfully!",
+      });
 
       setFormData({
         name: "",
@@ -77,9 +140,26 @@ function Contact() {
         message: "",
       });
     } catch (error) {
-      console.error("Contact form error:", error);
+      console.error("Contact form error:", {
+        message: error.message,
+        stack: error.stack,
+      });
 
-      setStatus({ type: "error", message: error.message || "Unable to send your message right now. Please try again later." });
+      // Provide specific error messages
+      let userMessage = "Unable to send your message right now.";
+      
+      if (error.message.includes("Failed to fetch")) {
+        userMessage = "Network error. Please check your connection and try again.";
+      } else if (error.message.includes("Server error")) {
+        userMessage = "Server error. Please try again in a few moments.";
+      } else {
+        userMessage = error.message || userMessage;
+      }
+
+      setStatus({
+        type: "error",
+        message: userMessage + " Please try again later.",
+      });
     } finally {
       setIsSending(false);
     }
@@ -108,43 +188,45 @@ function Contact() {
         {/* Contact content */}
         <div className="contact-content">
 
-          {/* Left side */}
+          {/* Contact information */}
           <div className="contact-info">
-
             <h3>Get in touch</h3>
 
             <p>
               I'm currently open to opportunities, collaborations,
               and interesting projects. Feel free to send me a message.
             </p>
-            
-</div>
-            <div className="contact-location">
-  <span className="location-icon">📍</span>
+          </div>
 
-  <div>
-    <strong>Based in</strong>
-    <p>Panvel, Maharashtra, India</p>
-  </div>
-</div>
+          {/* Location */}
+          <div className="contact-location">
+            <span className="location-icon">📍</span>
 
-<div className="contact-map">
-  <iframe
-    title="Panvel, Maharashtra"
-    src="https://www.google.com/maps?q=Panvel,Maharashtra,India&output=embed"
-    loading="lazy"
-    referrerPolicy="no-referrer-when-downgrade"
-  ></iframe>
-</div>
+            <div>
+              <strong>Based in</strong>
+              <p>Panvel, Maharashtra, India</p>
+            </div>
+          </div>
 
-          {/* Form */}
+          {/* Google Map */}
+          <div className="contact-map">
+            <iframe
+              title="Panvel, Maharashtra"
+              src="https://www.google.com/maps?q=Panvel,Maharashtra,India&output=embed"
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+            ></iframe>
+          </div>
+
+          {/* Contact Form */}
           <form
             className="contact-form"
             onSubmit={handleSubmit}
+            noValidate
           >
-
             <div className="form-row">
 
+              {/* Name */}
               <div className="form-group">
                 <label htmlFor="name">Name</label>
 
@@ -157,9 +239,11 @@ function Contact() {
                   onChange={handleChange}
                   required
                   maxLength={80}
+                  autoComplete="name"
                 />
               </div>
 
+              {/* Email */}
               <div className="form-group">
                 <label htmlFor="email">Email</label>
 
@@ -172,11 +256,13 @@ function Contact() {
                   onChange={handleChange}
                   required
                   maxLength={120}
+                  autoComplete="email"
                 />
               </div>
 
             </div>
 
+            {/* Subject */}
             <div className="form-group">
               <label htmlFor="subject">Subject</label>
 
@@ -192,21 +278,23 @@ function Contact() {
               />
             </div>
 
+            {/* Message */}
             <div className="form-group">
               <label htmlFor="message">Message</label>
 
               <textarea
                 id="message"
                 name="message"
-                rows="7"
+                rows={7}
                 placeholder="Write your message..."
                 value={formData.message}
                 onChange={handleChange}
                 required
                 maxLength={3000}
-              />
+              ></textarea>
             </div>
 
+            {/* Submit Button */}
             <button
               type="submit"
               className="contact-submit"
@@ -216,6 +304,7 @@ function Contact() {
               <span>→</span>
             </button>
 
+            {/* Status */}
             {status.message && (
               <p
                 className={`contact-status contact-status-${status.type}`}
@@ -225,7 +314,6 @@ function Contact() {
                 {status.message}
               </p>
             )}
-
           </form>
 
         </div>
