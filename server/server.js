@@ -21,9 +21,30 @@ const port = process.env.PORT || 5000;
 await connectDB();
 
 app.disable("x-powered-by");
+
+// Configure CORS to allow multiple origins
+const allowedOrigins = [
+	"http://localhost:5173",
+	"http://localhost:3000",
+	process.env.CLIENT_URL,
+	process.env.FRONTEND_URL,
+	process.env.DEPLOYED_URL,
+	// Add your deployed portfolio URL here
+	"https://your-portfolio-domain.com",
+].filter(Boolean); // Remove undefined values
+
 app.use(cors({
-	origin: process.env.CLIENT_URL || process.env.FRONTEND_URL || "http://localhost:5173",
+	origin: (origin, callback) => {
+		// Allow requests with no origin (like mobile apps or curl requests)
+		if (!origin || allowedOrigins.includes(origin)) {
+			callback(null, true);
+		} else {
+			callback(new Error("Not allowed by CORS"));
+		}
+	},
 	credentials: true,
+	methods: ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"],
+	allowedHeaders: ["Content-Type", "Authorization"],
 }));
 app.use(helmet({ crossOriginResourcePolicy: { policy: "cross-origin" } }));
 app.use(cookieParser());
