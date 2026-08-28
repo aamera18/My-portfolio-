@@ -63,15 +63,6 @@ function Contact() {
     }));
   };
 
-  const getApiUrl = () => {
-    // First, try to use the Vite environment variable
-    const envUrl = import.meta.env.VITE_API_URL;
-    if (envUrl) return envUrl;
-
-    // Default to deployed API - never use localhost
-    return "https://portfolio-api-66o3.onrender.com";
-  };
-
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -93,23 +84,21 @@ function Contact() {
     });
 
     try {
-      const API_URL = getApiUrl();
+      const submissionData = {
+        access_key: import.meta.env.VITE_WEB3FORMS_ACCESS_KEY,
+        name: formData.name,
+        email: formData.email,
+        subject: formData.subject,
+        message: formData.message,
+      };
 
-      if (!API_URL) {
-        throw new Error(
-          "Contact service is not configured. Please try again later."
-        );
-      }
-
-      const endpoint = `${API_URL}/api/contact`;
-      
-      const response = await fetch(endpoint, {
+      const response = await fetch("https://api.web3forms.com/submit", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
+          Accept: "application/json",
         },
-        credentials: "omit", // Don't send credentials for cross-origin
-        body: JSON.stringify(formData),
+        body: JSON.stringify(submissionData),
       });
 
       let data = {};
@@ -120,11 +109,11 @@ function Contact() {
         data = {};
       }
 
-      if (!response.ok) {
-        const errorMessage = 
+      if (!response.ok || data.success !== true) {
+        const errorMessage =
           data.message ||
           data.error ||
-          `Server error: ${response.status}`;
+          `Unable to send your message right now. (Request failed with status ${response.status})`;
         throw new Error(errorMessage);
       }
 
@@ -145,20 +134,17 @@ function Contact() {
         stack: error.stack,
       });
 
-      // Provide specific error messages
       let userMessage = "Unable to send your message right now.";
-      
+
       if (error.message.includes("Failed to fetch")) {
         userMessage = "Network error. Please check your connection and try again.";
-      } else if (error.message.includes("Server error")) {
-        userMessage = "Server error. Please try again in a few moments.";
       } else {
         userMessage = error.message || userMessage;
       }
 
       setStatus({
         type: "error",
-        message: userMessage + " Please try again later.",
+        message: userMessage,
       });
     } finally {
       setIsSending(false);
